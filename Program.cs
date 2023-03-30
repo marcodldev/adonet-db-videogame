@@ -57,8 +57,10 @@ using System.Data.SqlClient;
                     break;
 
                     case 3:
-                    //   RicercaVideogiochiPerNome(manager);
-                    Console.WriteLine("ricercaNomeTEST");
+                    Console.WriteLine("Inserisci il nome del videogioco");
+                    string name = Console.ReadLine();
+
+                    manager.RicercaVideogiochiPerNome(name);
                     break;
 
                     case 4:
