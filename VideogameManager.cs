@@ -26,7 +26,7 @@ namespace adonet_db_videogame
 
             string query = "INSERT INTO videogames (name,overview,release_date,created_at,updated_at,software_house_id) VALUES" +
                     " (@name,@overview,@release_date,@created_at,@updated_at,@software_house_id)";
-
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -44,12 +44,71 @@ namespace adonet_db_videogame
 
 
 
-        public void RicercaVideogamePerId(int id)
+     /*   public Videogame RicercaVideogamePerId(int id)
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=videogames_db;Integrated Security=True";
+            string query = "SELECT * FROM videogames WHERE id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                Console.WriteLine(id);
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                  
+                }
             }
 
-            public void RicercaVideogiochiPerNome()
+            return null;
+        } */
+
+        public Videogame RicercaVideogamePerId(int id)
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=videogames_db;Integrated Security=True";
+            string query = "SELECT * FROM videogames WHERE id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int videogameId = Convert.ToInt32(reader["id"]);
+                        string name = (string)reader["name"];
+                        string overview = (string)reader["overview"];
+                        DateTime releaseDate = (DateTime)reader["release_date"];
+                        DateTime createdAt = (DateTime)reader["created_at"];
+                        DateTime updatedAt = (DateTime)reader["updated_at"];
+                        int softwareHouseId = Convert.ToInt32(reader["software_house_id"]);
+
+                        Videogame videogame = new Videogame(name, overview, releaseDate, createdAt, updatedAt, softwareHouseId);
+
+                        Console.WriteLine(videogame);
+                        return videogame;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Il videogame con l'id: '{id}' non è stato trovato");
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+        public void RicercaVideogiochiPerNome()
             {
 
             }
