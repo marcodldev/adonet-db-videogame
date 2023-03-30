@@ -21,12 +21,12 @@ namespace adonet_db_videogame
         }
 
              int Id { get; }
-             string Name { get; set; }
-             string Overview { get; set; }
-             DateTime ReleaseDate { get; set; }
-             DateTime CreatedAt { get; set; }
-             DateTime UpdatedAt { get; set; }
-             int SoftwareHouseId { get; set; }
+        public  string Name { get; set; }
+        public string Overview { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public int SoftwareHouseId { get; set; }
         
 
     }

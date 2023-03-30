@@ -11,7 +11,9 @@ using System.Data.SqlClient;
 
             Console.WriteLine("Connessione al database riuscita");
 
-            var manager = new VideogameManager(connection);
+       
+        var manager = new VideogameManager(connection);
+        
 
             while (true)
             {
@@ -26,15 +28,32 @@ using System.Data.SqlClient;
 
                 switch (scelta)
                 {
-                    case 1:
-                    //  manager.InserisciVideogame(CreaVideogameDaInput());
+                    case 1:         
+                    Console.WriteLine("Inserisci il nome del gioco:");
+                    string nomeGioco = Console.ReadLine();
 
-                    Console.WriteLine("inserisciTEST");
-                        break;
+                    Console.WriteLine("Inserisci la descrizione del gioco:");
+                    string descrizioneGioco = Console.ReadLine();
+
+                    Console.WriteLine("Inserisci la data di rilascio del gioco (anno-mese-giorno):");
+                    DateTime dataRilascio = DateTime.Parse(Console.ReadLine());
+
+                    DateTime dataCorrente = DateTime.Now;
+
+                    Console.WriteLine("Inserisci l'ID della software house:");
+                    int softwareHouseId = int.Parse(Console.ReadLine());
+
+                    Videogame nuovoGioco = new Videogame(nomeGioco, descrizioneGioco, dataRilascio, dataCorrente, dataCorrente, softwareHouseId);
+                    manager.InserisciVideogame(nuovoGioco);
+                    break;
 
                     case 2:
-                    //  RicercaVideogamePerId(manager);
-                    Console.WriteLine("RicercaIdTEST");
+
+                    Console.WriteLine("Inserisci l'ID del videogioco");
+                    int id_ricerca = Convert.ToInt32(Console.ReadLine());
+
+                     manager.RicercaVideogamePerId(id_ricerca);
+                   
                     break;
 
                     case 3:
