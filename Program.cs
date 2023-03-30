@@ -64,8 +64,12 @@ using System.Data.SqlClient;
                     break;
 
                     case 4:
-                    //   manager.CancellaVideogame(int id);
-                    Console.WriteLine("CancellaTEST");
+                    Console.WriteLine("Inserisci il nome del gioco che vuoi cancellare:");
+                    string nomeGiocoDaCancellare = Console.ReadLine();
+
+                    manager.CancellaVideogame(nomeGiocoDaCancellare);
+
+                    Console.WriteLine($"Hai cancellato {nomeGiocoDaCancellare} dal database.");
                     break;
 
                     case 5:

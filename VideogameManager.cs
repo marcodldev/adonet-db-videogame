@@ -121,17 +121,28 @@ namespace adonet_db_videogame
 
 
 
-        
 
-      
 
-            public void CancellaVideogame()
+        public void CancellaVideogame(string nome)
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=videogames_db;Integrated Security=True";
+
+            string query = "DELETE FROM videogames WHERE name = @name";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.Add(new SqlParameter("@name", nome));
 
+                connection.Open();
+                int affectedRows = cmd.ExecuteNonQuery();
             }
+        }
 
-      
+
+
+
     }
-    
+
 
 }
