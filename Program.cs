@@ -1,4 +1,5 @@
-﻿using System;
+﻿using adonet_db_videogame;
+using System;
 using System.Data.SqlClient;
 
     string connectionString = "Data Source=localhost;Initial Catalog=videogames_db;Integrated Security=True";
@@ -26,20 +27,25 @@ using System.Data.SqlClient;
                 switch (scelta)
                 {
                     case 1:
-                        manager.InserisciVideogame(CreaVideogameDaInput());
+                    //  manager.InserisciVideogame(CreaVideogameDaInput());
+
+                    Console.WriteLine("inserisciTEST");
                         break;
 
                     case 2:
-                        RicercaVideogamePerId(manager);
-                        break;
+                    //  RicercaVideogamePerId(manager);
+                    Console.WriteLine("RicercaIdTEST");
+                    break;
 
                     case 3:
-                        RicercaVideogiochiPerNome(manager);
-                        break;
+                    //   RicercaVideogiochiPerNome(manager);
+                    Console.WriteLine("ricercaNomeTEST");
+                    break;
 
                     case 4:
-                        manager.CancellaVideogame(int id);
-                        break;
+                    //   manager.CancellaVideogame(int id);
+                    Console.WriteLine("CancellaTEST");
+                    break;
 
                     case 5:
                         return;

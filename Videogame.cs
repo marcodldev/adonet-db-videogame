@@ -11,7 +11,7 @@ namespace adonet_db_videogame
 
         public Videogame(string name, string overview, DateTime releaseDate, DateTime createdAt, DateTime updatedAt, int softwareHouseId)
         {
-            Id = this.Id;
+           
             Name = name;
             Overview = overview;
             ReleaseDate = releaseDate;
